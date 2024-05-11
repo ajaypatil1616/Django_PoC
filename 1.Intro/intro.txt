@@ -1,0 +1,6 @@
+#Django is Framework which is based on MVT model devloped in 2003 and realeased in 2005
+#currently Django is mainted by Django Software Foundation(DSF) and huge community
+# latest version :	4.2.11
+#what is MVT
+# workflow OR Architecture of Django
+

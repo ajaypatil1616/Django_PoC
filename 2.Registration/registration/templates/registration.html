@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content%}
+<div>
+    <h1 id="h1"> Registration Form</h1>
+    <form method="POST", action="">
+        {% csrf_token %}
+        {{form}}
+       
+        <input type="submit" value="Submit">
+    </form>
+    {%if data%}
+ 
+        {% for key, value in data.items %}
+        <p>{{key}} : {{value}}</p>
+        {% endfor%}
+            
+    {% endif%}
+</div>
+{% endblock %}

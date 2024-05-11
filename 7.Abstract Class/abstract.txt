@@ -1,0 +1,22 @@
+##source:
+#Customizing Field Names:
+You can use the source attribute to specify a different attribute or method name 
+from the model to be used when serializing or deserializing a field
+
+#Accessing Nested Attributes:
+If you have nested attributes or properties in your model, you can use source to 
+navigate to those attributes and serialize them accordingly.
+
+#
+
+
+#an abstract class is a base class that is meant to be inherited by other classes. 
+It provides a way to define common fields and methods that can be reused across
+multiple models
+
+#provides a built-in abstract user model (AbstractUser) that defines basic user
+ attributes like username, email, password, etc. This abstract user model can be 
+ extended to add custom fields or methods.
+
+ #Basic authentication : username and password authentication-+--
+ 

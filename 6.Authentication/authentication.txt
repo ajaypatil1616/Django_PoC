@@ -1,0 +1,14 @@
+#JWT have advantages over normal tokens
+
+##abstract class:
+#syntax : class classname(models.Model):
+            f1 = ..
+            f1 = ..
+            f1 = ..
+
+            class Meta :
+                abstract =True
+
+#This class will not be created at db nor can be register at admin
+#but other classes can inherit it and its fields
+

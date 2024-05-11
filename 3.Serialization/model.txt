@@ -1,0 +1,72 @@
+#Model : In Django, a model is a Python class that represents a database table.
+#Fields :
+0.auto_field = models.AutoField(primary_key=True)
+1. models.CharField(max_length=100)
+2.models.IntegerField()
+3. models.FloatField()
+4.models.DecimalField(max_digits=10, decimal_places=2)
+5.models.TextField()
+6.models.DateField()
+7.models.TimeField()
+8.models.DateTimeField()
+9.models.BooleanField()
+10.models.EmailField()
+11. models.URLField()
+12.foreign_key_field = models.ForeignKey('AnotherModel', on_delete=models.CASCADE)
+13. many_to_many_field = models.ManyToManyField('AnotherModel')
+14.models.BigAutoField(primary_key=True)
+15.models.BinaryField()
+16.models.DurationField()
+17.models.FileField(upload_to='files/')
+18.models.ImageField(upload_to='images/')
+19.models.PositiveIntegerField()
+
+
+##Meta class(simply metadata but) :modify the behavior of model fields
+#1.Override Default Behavior: You can override the default behavior of Django by 
+setting various attributes like abstract, indexes, unique_together, etc.
+#2.Specify Metadata:
+#3.Define Constraints
+#4.Provide Database-specific Options
+
+
+# is_valid : validate data during deserialization before writing it to a database
+# A QuerySet is a collection of objects from a database
+
+##
+api_view == function based view
+APIView  == class based view
+
+generics.ListCreateAPIView
+generics.RetrieveUpdateDestroyAPIView
+
+##Serilizations Methods:
+
+# 1. __init__(): This method initializes the serializer instance. It can be overridden 
+to customize the behavior of the serializer.
+
+class MySerializer(serializers.Serializer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['my_field'].read_only = True
+
+#2. create(): This method defines how the serializer creates a new object instance.
+
+class MySerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        return MyModel.objects.create(**validated_data)
+
+#3.update(): This method defines how the serializer updates an existing object instance.
+
+class MySerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.save()
+        return instance
+#4. validate(): This method is used for validating the entire serializer input.
+
+class MySerializer(serializers.Serializer):
+    def validate(self, data):
+        if data['age'] < 0:
+            raise serializers.ValidationError("Age must be a non-negative number")
+        return data

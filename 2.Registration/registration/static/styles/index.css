@@ -1,0 +1,13 @@
+footer {
+    background-color:  maroon;
+    color: aqua;
+}
+header {
+    background-color:  maroon;
+    color: aqua;
+}
+div{
+    align-items: center ;
+    text-align: center;
+    /* border: 1px solid black;  */
+}

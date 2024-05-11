@@ -1,0 +1,64 @@
+#It is the process of converting complex data types(python objects) into python data types
+or in json format
+
+## In the context of Django REST Framework, serialization refers to converting Django 
+model instances and querysets into JSON, XML, or other content types that can be sent 
+over HTTP.
+
+#ModelSerializer provided by DRF, which automatically generates serializer fields
+ based on the model fields.
+
+##2.Nested Serialization:
+Sometimes, you may need to serialize related models or nested data. 
+DRF allows you to do this using serializers.
+##3.Custom Serialization:
+Sometimes, you may need to customize serialization behavior based on specific 
+requirements. DRF provides options to create custom serializers.
+
+class CustomBookSerializer(serializers.ModelSerializer):
+    publication_year = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Book
+        fields = ['id', 'title', 'author', 'publication_year']
+
+    def get_publication_year(self, obj):
+        return obj.publication_date.year
+        
+##exclude attribute in serializers is used to specify which fields should be
+ excluded from serialization or deserialization. 
+
+ class MyModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyModel
+        exclude = ['field1', 'field2']
+
+
+##create() method overrides the default creation behavior. It creates a new 
+Tenant instance using the provided validated data.
+##update() method overrides the default update behavior. It updates an existing 
+Tenant instance with the provided validated data.
+##validate() method performs custom validation. In this example, it checks if the 
+email is unique among existing Tenant instances.
+
+
+##Documentation DRF
+
+#The @api_view decorator for working with function based views.
+#The APIView class for working with class-based views.
+These wrappers provide a few bits of functionality such as making sure you receive 
+Request instances in your view, and adding context to Response objects so that content 
+negotiation can be performed.
+
+##REST framework includes an abstraction for dealing with ViewSets, that allows 
+the developer to concentrate on modeling the state and interactions of the API, 
+and leave the URL construction to be handled automatically, based on common conventions.
+
+##a router is a class that automatically generates URL configurations for views
+
+#DRF comes with two routers : SimpleRouter and DefaultRouter. 
+The main difference between them is that DefaultRouter includes a default API root
+ view that lists hyperlinked list views. This makes it easier to navigate through an 
+ application
+
+#
